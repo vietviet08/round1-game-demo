@@ -131,26 +131,6 @@ function App() {
     setClickedCircles(new Set())
   }
 
-  const handleAutoClick = (id: number) => {
-    if (gameStatus !== 'playing') return
-
-    const newClicked = new Set(clickedCircles)
-    newClicked.add(id)
-    setClickedCircles(newClicked)
-
-    if (id === points) {
-      setGameStatus('won')
-      setIsAutoPlay(false)
-      if (timerRef.current) {
-        clearInterval(timerRef.current)
-      }
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current)
-        autoPlayRef.current = null
-      }
-    }
-  }
-
   const handleCircleClick = useCallback((id: number) => {
     if (gameStatus !== 'playing') return
 
